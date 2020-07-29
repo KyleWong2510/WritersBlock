@@ -1,6 +1,29 @@
 .header {
   display: flex;
   height: 15vh;
-  padding: 5%;
+  justify-content: space-between;
+  padding: 1%;
   width: 100vw
+}
+
+.header-title {
+  font-size: 3.5em;
+}
+
+.header-desc {
+  font-size: 1.5em;
+}
+
+.header-text {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header-btn {
+  align-self: flex-end;
+  height: 25%;
+  text-align: center;
+  width: 15%
 }
