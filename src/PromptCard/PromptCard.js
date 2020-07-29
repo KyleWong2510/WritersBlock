@@ -3,9 +3,9 @@ import './PromptCard.css'
 
 const PromptCard = () => {
   return (
-    <section>
-      <h3>PromptHere</h3>
-      <p>card stats</p>
+    <section className='prompt-card'>
+      <h3 className='prompt-desc'>PromptHere</h3>
+      <section className='prompt-stats'>card stats</section>
     </section>
   )
 }
