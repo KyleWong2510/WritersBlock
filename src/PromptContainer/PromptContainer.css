@@ -1,10 +1,20 @@
 .prompt-container {
+  display: flex;
+  flex-direction: column;
+  height: 85vh;
+  padding: 2%;
+  width: 100vw;
+}
+
+.prompt-container-title {
+  text-align: center;
+}
+
+.prompts {
   column-gap: 2%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr ;
-  height: 85vh;
   overflow: scroll;
   padding: 2%;
   row-gap: 5%;
-  width: 100vw;
 }
