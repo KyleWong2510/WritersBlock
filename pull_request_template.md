@@ -17,7 +17,7 @@ Please check the type of change your PR introduces:
 
 ## What is the change being introduced?
 <!-- Please describe the behavior or changes that are being added by this PR. -->
-- Create Header component and layout Header
+- 
 
 ## Does this introduce a breaking change?
 - [ ] Yes
