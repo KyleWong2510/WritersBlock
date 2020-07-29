@@ -7,6 +7,14 @@ const PromptContainer = () => {
   return (
     <main className='prompt-container'>
       <PromptCard />
+      <PromptCard />
+      <PromptCard />
+      <PromptCard />
+      <PromptCard />
+      <PromptCard />
+      <PromptCard />
+      <PromptCard />
+      <PromptCard />
     </main>
   )
 }

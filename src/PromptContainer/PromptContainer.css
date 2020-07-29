@@ -1,5 +1,10 @@
 .prompt-container {
+  column-gap: 2%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr ;
   height: 85vh;
+  overflow: scroll;
   padding: 2%;
-  width: 100vw
+  row-gap: 5%;
+  width: 100vw;
 }
