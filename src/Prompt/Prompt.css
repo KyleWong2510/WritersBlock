@@ -1,0 +1,19 @@
+.prompt {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 85vh;
+  justify-content: space-between;
+  text-align: center;
+  width: 100vw
+}
+
+.write-prompt-btn {
+  height: 10%;
+  width: 10%
+}
+
+.story-container {
+  height: 50%;
+  width: 100%
+}
