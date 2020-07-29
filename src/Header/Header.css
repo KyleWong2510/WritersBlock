@@ -1,0 +1,6 @@
+.header {
+  display: flex;
+  height: 15vh;
+  padding: 5%;
+  width: 100vw
+}
