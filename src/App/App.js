@@ -3,6 +3,7 @@ import './App.css';
 import Header from '../Header/Header'
 import PromptContainer from '../PromptContainer/PromptContainer'
 import PromptGenerator from  '../PromptGenerator/PromptGenerator'
+import Prompt from '../Prompt/Prompt'
 
 class App extends React.Component {
   constructor() {
@@ -17,7 +18,8 @@ class App extends React.Component {
       <>
         <Header />
         {/* <PromptContainer /> */}
-        <PromptGenerator />
+        {/* <PromptGenerator /> */}
+        <Prompt />
       </>
     )
   }

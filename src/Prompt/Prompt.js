@@ -3,10 +3,10 @@ import './Prompt.css'
 
 const Prompt = () => {
   return (
-    <main>
+    <main className='prompt'>
       <h2>PROMPT</h2>
-      <button>Write this prompt</button>
-      <section>
+      <button className='write-prompt-btn'>Write this prompt</button>
+      <section className='story-container'>
         STORIESSTORIESSTORIES
       </section>
     </main>
