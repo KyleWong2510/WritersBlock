@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './PromptGenerator.css'
 import { getRandomCharacter, getRandomWords, getRandomPrompt } from '../apiCalls'
 
@@ -52,7 +53,9 @@ class PromptGenerator extends React.Component {
           </button>
           <section className='generator-confirm-btns'>
             <button className='generator-btns'>Generate New Prompt</button>
-            <button className='generator-btns'>Use This Prompt</button>
+            <Link to='/prompt'>
+              <button className='generator-btns'>Use This Prompt</button>
+            </Link>
           </section>
         </section>
       </main>
