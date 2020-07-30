@@ -18,8 +18,8 @@ class App extends React.Component {
       <>
         <Header />
         {/* <PromptContainer /> */}
-        {/* <PromptGenerator /> */}
-        <Prompt />
+        <PromptGenerator />
+        {/* <Prompt /> */}
       </>
     )
   }

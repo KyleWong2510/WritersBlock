@@ -33,7 +33,8 @@ class PromptGenerator extends React.Component {
   }
 
   generatePrompt = () => {
-    
+    this.generateCharacter()
+    this.generateWords()
   }
 
   render() {
@@ -41,7 +42,12 @@ class PromptGenerator extends React.Component {
       <main className='prompt-generator'>
         <section className='generator-btn-container'>
           <h2>Generate a new prompt</h2>
-          <button className='generator-btns generate-btn'>Generate Prompt</button>
+          <button 
+            className='generator-btns generate-btn'
+            onClick={this.generatePrompt}
+          >
+            Generate Prompt
+          </button>
           <section className='generator-confirm-btns'>
             <button className='generator-btns'>Generate New Prompt</button>
             <button className='generator-btns'>Use This Prompt</button>
