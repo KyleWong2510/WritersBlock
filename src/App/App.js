@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route } from 'react-router-dom'
 import './App.css';
 import Header from '../Header/Header'
 import PromptContainer from '../PromptContainer/PromptContainer'
@@ -16,10 +17,18 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <Header />
-        {/* <PromptContainer /> */}
-        <PromptGenerator />
-        {/* <Prompt /> */}
+        <Route exact path='/'>
+          <Header />
+          <PromptContainer />
+        </Route>
+        <Route path='/prompt-generator'>
+          <Header />
+          <PromptGenerator />
+        </Route>
+        <Route path='/prompt'>
+          <Header />
+          <Prompt />
+        </Route>
       </>
     )
   }
