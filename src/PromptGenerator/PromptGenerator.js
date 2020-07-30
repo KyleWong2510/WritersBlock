@@ -1,12 +1,32 @@
 import React from 'react'
 import './PromptGenerator.css'
+import { getRandomCharacter, getRandomWords, getRandomPrompt } from '../apiCalls'
 
 class PromptGenerator extends React.Component {
   constructor() {
     super()
     this.state={
-
+      characterName: {},
+      characterAge: {},
+      location: {},
+      nationality: {}
     }
+  }
+
+  generateCharacter = () => {
+    getRandomCharacter()
+      .then(data => {
+        const character = data.results[0]
+        this.setState({ characterName: character.name })
+        this.setState({ characterAge: character.age})
+        this.setState({ location: character.location })
+        this.setState({ nationality: character.nat})
+      })
+      .catch(err => console.error(err))
+  }
+
+  generatePrompt = () => {
+    
   }
 
   render() {
