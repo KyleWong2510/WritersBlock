@@ -1,5 +1,6 @@
 export const getRandomCharacter = () => {
-  return fetch('https://randomuser.me/api/?inc=gender,name,location,dob,nat')
+  const url = 'https://cors-anywhere.herokuapp.com/https://randomuser.me/api/?inc=gender,name,location,dob,nat'
+  return fetch(url)
     .then(res => res.json())
 }
 
