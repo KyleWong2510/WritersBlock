@@ -6,6 +6,7 @@ class PromptGenerator extends React.Component {
   constructor() {
     super()
     this.state={
+      prompt: '',
       characterName: {},
       characterAge: {},
       location: {},
@@ -33,8 +34,9 @@ class PromptGenerator extends React.Component {
   }
 
   generatePrompt = () => {
-    this.generateCharacter()
-    this.generateWords()
+    getRandomPrompt()
+      .then(data => this.setState({ prompt: data.english }))
+      .catch(err => console.error(err))
   }
 
   render() {
