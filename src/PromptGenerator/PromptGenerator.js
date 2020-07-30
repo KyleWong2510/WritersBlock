@@ -9,7 +9,8 @@ class PromptGenerator extends React.Component {
       characterName: {},
       characterAge: {},
       location: {},
-      nationality: {}
+      nationality: {},
+      words: []
     }
   }
 
@@ -22,6 +23,12 @@ class PromptGenerator extends React.Component {
         this.setState({ location: character.location })
         this.setState({ nationality: character.nat})
       })
+      .catch(err => console.error(err))
+  }
+
+  generateWords = () => {
+    getRandomWords()
+      .then(data => this.setState({ words: data }))
       .catch(err => console.error(err))
   }
 
