@@ -23,7 +23,7 @@ class App extends React.Component {
       <>
         <Route exact path='/'>
           <Header />
-          <PromptContainer />
+          <PromptContainer prompts={this.state.prompts}/>
         </Route>
         <Route path='/prompt-generator'>
           <Header />
