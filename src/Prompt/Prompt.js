@@ -4,9 +4,9 @@ import './Prompt.css'
 const Prompt = () => {
   return (
     <main className='prompt'>
-      <h2>PROMPT</h2>
+      <h2 data-testid='prompt'>PROMPT</h2>
       <button className='write-prompt-btn'>Write this prompt</button>
-      <section className='story-container'>
+      <section data-testid='related-stories' className='story-container'>
         STORIESSTORIESSTORIES
       </section>
     </main>
