@@ -9,7 +9,7 @@ const Header = () => {
         <Link to='/'>
           <h1 className='header-title'>Writer's Block</h1>
         </Link>
-        <p className='header-desc'>Character and prompt generator</p>
+        <p className='header-desc'>Writing prompt generator</p>
       </section>
       <Link to='/prompt-generator'><button className='header-btn'>Generate Prompt</button></Link>
     </header>
