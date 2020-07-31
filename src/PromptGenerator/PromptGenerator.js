@@ -4,8 +4,8 @@ import './PromptGenerator.css'
 import { getRandomCharacter, getRandomWords, getRandomPrompt } from '../apiCalls'
 
 class PromptGenerator extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state={
       prompt: '',
       characterName: {},
@@ -69,7 +69,12 @@ class PromptGenerator extends React.Component {
     if (this.state.prompt) {
       return (
         <>
-          <button className='generator-btns'>Generate New Prompt</button>
+          <button 
+            className='generator-btns'
+            onClick={this.generatePrompt}
+          >
+          Generate New Prompt
+          </button>
           <button 
             className='generator-btns' 
             onClick={this.generateCharacter}
@@ -83,7 +88,12 @@ class PromptGenerator extends React.Component {
             Add a Location
           </button>
           <Link to='/prompt'>
-            <button className='generator-btns'>Use This Prompt</button>
+            <button 
+              className='generator-btns'
+              onClick={this.usePrompt}
+            >
+              Use This Prompt
+            </button>
           </Link>
         </>
       )
@@ -116,6 +126,11 @@ class PromptGenerator extends React.Component {
         </section>
       )
     }
+  }
+
+  usePrompt = () => {
+    const newPrompt = {...this.state, id: Date.now()}
+    this.props.savePrompt(newPrompt)
   }
 
   render() {

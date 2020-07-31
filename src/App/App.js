@@ -10,8 +10,12 @@ class App extends React.Component {
   constructor() {
     super()
     this.state={
-
+      prompts: []
     }
+  }
+
+  savePrompt = (newPrompt) => {
+    this.setState({ prompts: [...this.state.prompts, newPrompt]})
   }
 
   render() {
@@ -23,7 +27,9 @@ class App extends React.Component {
         </Route>
         <Route path='/prompt-generator'>
           <Header />
-          <PromptGenerator />
+          <PromptGenerator 
+            savePrompt={this.savePrompt}
+          />
         </Route>
         <Route path='/prompt'>
           <Header />
