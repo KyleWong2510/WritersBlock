@@ -54,7 +54,7 @@ class PromptGenerator extends React.Component {
     if (this.state.prompt) {
       return (
         <section>
-          <h3>Prompt</h3>
+          <h3 data-testid='prompt-text'>Prompt</h3>
           <p>{this.state.prompt}</p>
         </section>
       )
