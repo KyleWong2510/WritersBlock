@@ -31,10 +31,20 @@ class App extends React.Component {
             savePrompt={this.savePrompt}
           />
         </Route>
-        <Route path='/prompt'>
-          <Header />
-          <Prompt />
-        </Route>
+        <Route 
+          exact
+          path='/prompt/:id'
+          render={({ match }) => {
+            const { id } = match.params
+            const prompt = this.state.prompts.find(prompt => prompt.id === parseInt(id))
+            return (
+              <>
+                <Header />
+                <Prompt {...prompt} />
+              </>
+            )}
+          }
+        />
       </>
     )
   }
