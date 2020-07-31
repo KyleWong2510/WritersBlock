@@ -7,6 +7,7 @@ class PromptGenerator extends React.Component {
   constructor(props) {
     super(props)
     this.state={
+      id: Date.now(),
       prompt: '',
       characterName: {},
       characterAge: {},
@@ -65,6 +66,34 @@ class PromptGenerator extends React.Component {
     }
   }
 
+  renderCharacterBtn = () => {
+      return (
+        <button 
+          className='generator-btns' 
+          onClick={this.generateCharacter}
+        >
+          {!this.state.characterName.first ? 
+            <p>Add a Character</p> :
+            <p>Get a New Character</p>
+          }
+        </button>
+      )
+  }
+
+  renderLocationBtn = () => {
+    return (
+      <button 
+        className='generator-btns'
+        onClick={this.generateLocation}
+      >
+        {!this.state.location.city ?
+          <p>Add a Location</p> :
+          <p>Get a New Location</p>
+        }
+      </button>
+    )
+  }
+
   renderBtns = () => {
     if (this.state.prompt) {
       return (
@@ -75,22 +104,12 @@ class PromptGenerator extends React.Component {
           >
           Generate New Prompt
           </button>
-          <button 
-            className='generator-btns' 
-            onClick={this.generateCharacter}
-          >
-            Add a Character
-          </button>
-          <button 
-            className='generator-btns'
-            onClick={this.generateLocation}
-          >
-            Add a Location
-          </button>
-          <Link to='/prompt'>
+          {this.renderCharacterBtn()}
+          {this.renderLocationBtn()}
+          <Link to={`/prompt/${this.state.id}`}>
             <button 
               className='generator-btns'
-              onClick={this.usePrompt}
+              onClick={() => this.props.savePrompt(this.state)}
             >
               Use This Prompt
             </button>
@@ -126,11 +145,6 @@ class PromptGenerator extends React.Component {
         </section>
       )
     }
-  }
-
-  usePrompt = () => {
-    const newPrompt = {...this.state, id: Date.now()}
-    this.props.savePrompt(newPrompt)
   }
 
   render() {
