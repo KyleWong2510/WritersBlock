@@ -11,7 +11,7 @@ const PromptContainer = ({ prompts }) => {
   return (
     <main className='prompt-container'>
       <h2 className='prompt-container-title'>Prompts</h2>
-      <section className='prompts'>
+      <section data-testid='prompts' className='prompts'>
         {allPrompts}
       </section>
     </main>
