@@ -40,7 +40,7 @@ class App extends React.Component {
             return (
               <>
                 <Header />
-                <Prompt {...prompt} />
+                <Prompt prompt={prompt} />
               </>
             )}
           }
