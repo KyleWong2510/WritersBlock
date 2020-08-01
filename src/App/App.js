@@ -42,16 +42,18 @@ class App extends React.Component {
           render={({ match }) => {
             const { id } = match.params
             const prompt = this.state.prompts.find(prompt => prompt.id === parseInt(id))
+            const stories = this.state.stories.filter(story => story.promptId === parseInt(id))
             return (
               <>
                 <Header />
                 <Prompt 
-                  prompt={prompt} 
+                  prompt={prompt}
+                  stories={stories} 
                   saveStory={this.saveStory}
                 />
               </>
-            )}
-          }
+            )
+          }}
         />
       </>
     )

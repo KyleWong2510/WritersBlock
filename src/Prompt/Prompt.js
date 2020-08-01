@@ -5,16 +5,25 @@ class Prompt extends React.Component {
   constructor(props) {
     super(props)
     this.state={
-      isWriting: false
+      isWriting: false,
+      story: ''
     }
   }
+
+  handleChange = (e) => {
+    this.setState({ story: e.target.value })
+  }
   
+  resetStory = () => {
+    this.setState({ story: '' })
+  }
+
   renderPrompt = () => {
     return this.props.prompt.prompt && 
-        <section>
-          <h2 data-testid='prompt'>Prompt</h2>
-          <p>{this.props.prompt.prompt}</p>
-        </section> 
+      <section>
+        <h2 data-testid='prompt'>Prompt</h2>
+        <p>{this.props.prompt.prompt}</p>
+      </section> 
   }
 
   renderCharacter = () => {
@@ -37,8 +46,15 @@ class Prompt extends React.Component {
   }
 
   completeStory = () => {
-    this.props.saveStory()
+    if (this.state.story) {
+      const newStory = {
+      promptId: this.props.prompt.id,
+      storyText: this.state.story
+    }
+    this.props.saveStory(newStory)
+    } 
     this.toggleIsWriting()
+    this.resetStory()
   }
 
   renderButtons = () => {
@@ -46,7 +62,7 @@ class Prompt extends React.Component {
       <button onClick={this.completeStory}>Save this story</button> :
       <button 
         className='write-prompt-btn' 
-        onClick={this.toggleIsWriting}
+        onClick={(e) => this.toggleIsWriting(e)}
       >
         Write this prompt
       </button>
@@ -61,9 +77,30 @@ class Prompt extends React.Component {
       <textarea 
         className='text-area'
         placeholder='Start your story here...'
+        value={this.state.story}
+        onChange={this.handleChange}
         rows= '5'
         cols='30'
       />
+  }
+
+  renderStories = () => {
+    if (this.props.stories.length > 0 ) {
+      const stories = this.props.stories.map(story => {
+        return (
+          <section>
+            {story.storyText}
+          </section>
+        )
+      })
+      return (
+        <section data-testid='related-stories' className='story-container'>
+          {stories}
+        </section>
+      )
+    } else {
+      return <p data-testid='related-stories' className='story-container'>No stories yet.  Get to writing!</p>
+    }
   }
 
   render() {
@@ -74,9 +111,7 @@ class Prompt extends React.Component {
         {this.renderLocation()}
         {this.renderTextArea()}
         {this.renderButtons()}
-        <section data-testid='related-stories' className='story-container'>
-          STORIESSTORIESSTORIES
-        </section>
+        {this.renderStories()}
       </main>
     )
   }
