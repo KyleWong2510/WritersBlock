@@ -7,6 +7,7 @@ class PromptGenerator extends React.Component {
   constructor(props) {
     super(props)
     this.state={
+      id: Date.now(),
       prompt: '',
       characterName: '',
       characterAge: '',
