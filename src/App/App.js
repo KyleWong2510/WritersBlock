@@ -10,12 +10,17 @@ class App extends React.Component {
   constructor() {
     super()
     this.state={
-      prompts: []
+      prompts: [],
+      stories: []
     }
   }
 
   savePrompt = (newPrompt) => {
     this.setState({ prompts: [...this.state.prompts, newPrompt]})
+  }
+  
+  saveStory = (newStory) => {
+    this.setState({ stories: [...this.state.stories, newStory]})
   }
 
   render() {
@@ -40,7 +45,10 @@ class App extends React.Component {
             return (
               <>
                 <Header />
-                <Prompt prompt={prompt} />
+                <Prompt 
+                  prompt={prompt} 
+                  saveStory={this.saveStory}
+                />
               </>
             )}
           }
