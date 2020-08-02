@@ -33,9 +33,9 @@ class Prompt extends React.Component {
     return this.props.prompt.characterName && 
       <section>
         <h3>Character</h3>
-        <p>{this.props.prompt.characterName}</p>
-        <p>{this.props.prompt.characterAge}</p>
-        <p>{this.props.prompt.nationality}</p>
+        <p>Name: {this.props.prompt.characterName}</p>
+        <p>Age: {this.props.prompt.characterAge}</p>
+        <p>Nationality: {this.props.prompt.nationality}</p>
       </section>
   }
 
