@@ -6,12 +6,15 @@ class Prompt extends React.Component {
     super(props)
     this.state={
       isWriting: false,
+      storyTitle: '',
+      authorName: '',
       story: ''
     }
   }
 
   handleChange = (e) => {
-    this.setState({ story: e.target.value })
+    const { name, value } = e.target
+    this.setState({ [name]: value })
   }
   
   resetStory = () => {
@@ -46,9 +49,13 @@ class Prompt extends React.Component {
   }
 
   completeStory = () => {
-    if (this.state.story) {
+    let author
+    !this.state.authorName ? author = 'Anonymous' : author = this.state.authorName
+    if (this.state.story && this.state.storyTitle) {
       const newStory = {
       promptId: this.props.prompt.id,
+      storyTitle: this.state.storyTitle,
+      authorName: author,
       storyText: this.state.story
     }
     this.props.saveStory(newStory)
@@ -73,15 +80,47 @@ class Prompt extends React.Component {
   }
 
   renderTextArea = () => {
+    //ERROR HANDLING FOR NO TITLE
+
     return this.state.isWriting && 
-      <textarea 
-        className='text-area'
-        placeholder='Start your story here...'
-        value={this.state.story}
-        onChange={this.handleChange}
-        rows= '5'
-        cols='30'
-      />
+      <section>
+        <label for='title'>
+          Title: 
+          <input 
+            id='title'
+            type='text'
+            name='storyTitle'
+            placeholder='Story Title...'
+            value={this.state.storyTitle}
+            onChange={this.handleChange}
+          />
+        </label>
+        <label for='author'>
+          Written By:
+          <input 
+            id='author'
+            type='text'
+            name='authorName'
+            placeholder='Author Name...'
+            value={this.state.authorName}
+            onChange={this.handleChange}
+          />
+        </label>
+        <label for='story'>
+          Story:
+          <textarea 
+            id='story'
+            className='text-area'
+            name='story'
+            placeholder='Start your story here...'
+            value={this.state.story}
+            onChange={this.handleChange}
+            rows= '5'
+            cols='30'
+          />
+        </label>
+
+      </section>
   }
 
   renderStories = () => {
@@ -89,7 +128,9 @@ class Prompt extends React.Component {
       const stories = this.props.stories.map(story => {
         return (
           <section>
-            {story.storyText}
+            <p>{story.storyTitle}</p>
+            <p>by {story.authorName}</p>
+            <p>{story.storyText}</p>
           </section>
         )
       })
@@ -116,6 +157,5 @@ class Prompt extends React.Component {
     )
   }
 }
-
 
 export default Prompt
