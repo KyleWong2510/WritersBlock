@@ -200,7 +200,7 @@ describe('PromptGenerator', () => {
     expect(character).toBeInTheDocument()
   })
 
-  it('should render a character on click of the generateCharacter button', async () => {
+  it('should render a location on click of the generateCharacter button', async () => {
     const { getByRole, getByText } = render(
       <BrowserRouter>
         <PromptGenerator />
@@ -216,5 +216,22 @@ describe('PromptGenerator', () => {
     const location = await waitFor(() => getByText('Location'))
     
     expect(location).toBeInTheDocument()
+  })
+
+  it('should fire the post function on click', async () => {
+    const mockSavePrompt = jest.fn()
+    const { getByRole } = render(
+      <BrowserRouter>
+        <PromptGenerator savePrompt={mockSavePrompt} />
+      </BrowserRouter>
+    )
+    
+    const genPromptBtn = getByRole('button', {name: 'Generate Prompt'})
+    fireEvent.click(genPromptBtn)
+
+    const usePromptBtn = await waitFor(() => getByRole('button', {name: 'Use This Prompt'}))
+    fireEvent.click(usePromptBtn)
+    
+    expect(mockSavePrompt).toHaveBeenCalledTimes(1)
   })
 })

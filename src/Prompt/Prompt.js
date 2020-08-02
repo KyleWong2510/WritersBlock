@@ -6,6 +6,7 @@ class Prompt extends React.Component {
     super(props)
     this.state={
       isWriting: false,
+      storyId: Date.now(),
       storyTitle: '',
       authorName: '',
       story: ''
@@ -54,6 +55,7 @@ class Prompt extends React.Component {
     if (this.state.story && this.state.storyTitle) {
       const newStory = {
       promptId: this.props.prompt.id,
+      storyId: this.state.storyId,
       storyTitle: this.state.storyTitle,
       authorName: author,
       storyText: this.state.story
@@ -127,7 +129,7 @@ class Prompt extends React.Component {
     if (this.props.stories.length > 0 ) {
       const stories = this.props.stories.map(story => {
         return (
-          <section>
+          <section key={story.storyId}>
             <p>{story.storyTitle}</p>
             <p>by {story.authorName}</p>
             <p>{story.storyText}</p>

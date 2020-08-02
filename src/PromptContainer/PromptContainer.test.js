@@ -21,4 +21,23 @@ describe('PromptContainer', () => {
     expect(title).toBeInTheDocument()
     expect(allPrompts).toBeInTheDocument()
   })
+
+  it('should render the prompts', () => {
+    const prompts = [{prompt: 'X'}, {prompt: 'Y'}]
+
+    const { getByText } = render(
+      <BrowserRouter>
+        <PromptContainer prompts={prompts}
+        />
+      </BrowserRouter>
+    )
+
+    const title = getByText('Prompts')
+    const prompt1 = getByText('X')
+    const prompt2 = getByText('Y')
+
+    expect(title).toBeInTheDocument()
+    expect(prompt1).toBeInTheDocument()
+    expect(prompt2).toBeInTheDocument()
+  })
 })
