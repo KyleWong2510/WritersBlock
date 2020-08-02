@@ -62,6 +62,7 @@ class PromptGenerator extends React.Component {
     } else {
       return (
         <button 
+          data-testid='generate-btn'
           className='generator-btns generate-btn'
           onClick={this.generatePrompt}
         >
