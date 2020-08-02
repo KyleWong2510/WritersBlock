@@ -5,7 +5,7 @@ import Header from '../Header/Header'
 import PromptContainer from '../PromptContainer/PromptContainer'
 import PromptGenerator from  '../PromptGenerator/PromptGenerator'
 import Prompt from '../Prompt/Prompt'
-import { getPrompts, getStories } from '../apiCalls'
+import { getPrompts, getStories, postPrompt, postStory } from '../apiCalls'
 
 class App extends React.Component {
   constructor() {
@@ -31,10 +31,14 @@ class App extends React.Component {
 
   savePrompt = (newPrompt) => {
     this.setState({ prompts: [...this.state.prompts, newPrompt]})
+    postPrompt(newPrompt)
+      .catch(err => console.error(err))
   }
   
   saveStory = (newStory) => {
     this.setState({ stories: [...this.state.stories, newStory]})
+    postStory(newStory)
+      .catch(err => console.error(err))
   }
 
   render() {

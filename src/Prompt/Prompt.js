@@ -84,7 +84,7 @@ class Prompt extends React.Component {
 
     return this.state.isWriting && 
       <section>
-        <label for='title'>
+        <label htmlFor='title'>
           Title: 
           <input 
             id='title'
@@ -95,7 +95,7 @@ class Prompt extends React.Component {
             onChange={this.handleChange}
           />
         </label>
-        <label for='author'>
+        <label htmlFor='author'>
           Written By:
           <input 
             id='author'
@@ -106,7 +106,7 @@ class Prompt extends React.Component {
             onChange={this.handleChange}
           />
         </label>
-        <label for='story'>
+        <label htmlFor='story'>
           Story:
           <textarea 
             id='story'

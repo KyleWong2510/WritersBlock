@@ -5,7 +5,7 @@ import PromptCard from '../PromptCard/PromptCard'
 
 const PromptContainer = ({ prompts }) => {
   const allPrompts = prompts.map(prompt => {
-    return <PromptCard prompt={prompt} />
+    return <PromptCard prompt={prompt} key={prompt.id} />
   })
   
   return (
