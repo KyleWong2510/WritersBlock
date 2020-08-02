@@ -5,6 +5,7 @@ import Header from '../Header/Header'
 import PromptContainer from '../PromptContainer/PromptContainer'
 import PromptGenerator from  '../PromptGenerator/PromptGenerator'
 import Prompt from '../Prompt/Prompt'
+import { getPrompts, getStories } from '../apiCalls'
 
 class App extends React.Component {
   constructor() {
@@ -13,6 +14,19 @@ class App extends React.Component {
       prompts: [],
       stories: []
     }
+  }
+
+  componentDidMount = () => {
+    getPrompts()
+      .then(data => {
+        this.setState({ prompts: data})
+      })
+      .catch(err => console.error(err))
+    getStories()
+      .then(data => {
+        this.setState({ stories: data })
+      })
+      .catch(err => console.error(err))
   }
 
   savePrompt = (newPrompt) => {

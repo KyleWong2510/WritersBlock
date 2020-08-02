@@ -20,7 +20,7 @@ export const getPrompts = () => {
 }
 
 export const getStories = () => {
-  return fetcch('http://localhost:3001/api/v1/stories')
+  return fetch('http://localhost:3001/api/v1/stories')
     .then(res => res.json())
 }
 
