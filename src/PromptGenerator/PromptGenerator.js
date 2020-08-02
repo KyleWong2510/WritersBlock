@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import './PromptGenerator.css'
-import { getRandomCharacter, getRandomWords, getRandomPrompt } from '../apiCalls'
+import { getRandomCharacter, getRandomPrompt } from '../apiCalls'
 
 class PromptGenerator extends React.Component {
   constructor(props) {
@@ -38,11 +39,11 @@ class PromptGenerator extends React.Component {
       .catch(err => console.error(err))
   }
 
-  generateWords = () => {
-    getRandomWords()
-      .then(data => this.setState({ words: data }))
-      .catch(err => console.error(err))
-  }
+  // generateWords = () => {
+  //   getRandomWords()
+  //     .then(data => this.setState({ words: data }))
+  //     .catch(err => console.error(err))
+  // }
 
   generatePrompt = () => {
     getRandomPrompt()
@@ -168,3 +169,7 @@ class PromptGenerator extends React.Component {
 }
 
 export default PromptGenerator
+
+PromptGenerator.propTypes = {
+  savePrompt: PropTypes.func
+}

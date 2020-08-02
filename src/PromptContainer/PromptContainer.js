@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './PromptContainer.css'
 
 import PromptCard from '../PromptCard/PromptCard'
@@ -19,3 +20,7 @@ const PromptContainer = ({ prompts }) => {
 }
 
 export default PromptContainer
+
+PromptContainer.propTypes = {
+  prompts: PropTypes.array
+}
