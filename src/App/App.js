@@ -10,12 +10,17 @@ class App extends React.Component {
   constructor() {
     super()
     this.state={
-      prompts: []
+      prompts: [],
+      stories: []
     }
   }
 
   savePrompt = (newPrompt) => {
     this.setState({ prompts: [...this.state.prompts, newPrompt]})
+  }
+  
+  saveStory = (newStory) => {
+    this.setState({ stories: [...this.state.stories, newStory]})
   }
 
   render() {
@@ -37,13 +42,18 @@ class App extends React.Component {
           render={({ match }) => {
             const { id } = match.params
             const prompt = this.state.prompts.find(prompt => prompt.id === parseInt(id))
+            const stories = this.state.stories.filter(story => story.promptId === parseInt(id))
             return (
               <>
                 <Header />
-                <Prompt prompt={prompt} />
+                <Prompt 
+                  prompt={prompt}
+                  stories={stories} 
+                  saveStory={this.saveStory}
+                />
               </>
-            )}
-          }
+            )
+          }}
         />
       </>
     )
