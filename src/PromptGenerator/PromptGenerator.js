@@ -13,7 +13,6 @@ class PromptGenerator extends React.Component {
       characterAge: '',
       location: '',
       nationality: '',
-      words: []
     }
   }
 
@@ -115,7 +114,6 @@ class PromptGenerator extends React.Component {
           <Link to={`/prompt/${this.state.id}`}>
             <button 
               className='generator-btns'
-              // onClick={this.userPrompt()}
               onClick={() => this.props.savePrompt(this.state)}
             >
               Use This Prompt
