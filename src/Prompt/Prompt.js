@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './Prompt.css'
 
 class Prompt extends React.Component {
@@ -161,3 +162,9 @@ class Prompt extends React.Component {
 }
 
 export default Prompt
+
+Prompt.propTypes = {
+  prompt: PropTypes.object,
+  stories: PropTypes.array,
+  saveStory: PropTypes.func
+}
