@@ -54,7 +54,7 @@ class PromptGenerator extends React.Component {
   renderPrompt = () => {
     if (this.state.prompt) {
       return (
-        <section className='prompt-details'>
+        <section className='generator-prompt-details'>
           <h3 data-testid='prompt-text' className='generator-title'>Prompt</h3>
           <p>{this.state.prompt}</p>
         </section>
@@ -78,7 +78,7 @@ class PromptGenerator extends React.Component {
           className='generator-btns' 
           onClick={this.generateCharacter}
         >
-          {!this.state.characterName.first ? 
+          {!this.state.characterName ? 
             <p>Add a Character</p> :
             <p>Get a New Character</p>
           }
@@ -112,9 +112,9 @@ class PromptGenerator extends React.Component {
           </button>
           {this.renderCharacterBtn()}
           {this.renderLocationBtn()}
-          <Link to={`/prompt/${this.state.id}`}>
+          <Link to={`/prompt/${this.state.id}`} className='generator-btns'>
             <button 
-              className='generator-btns'
+              className='use-prompt-btn'
               onClick={() => this.props.savePrompt(this.state)}
             >
               Use This Prompt
