@@ -138,7 +138,7 @@ class Prompt extends React.Component {
     if (this.props.stories.length > 0 ) {
       const stories = this.props.stories.map(story => {
         return (
-          <Link to={`/story/${story.storyId}`}>
+          <Link to={`/story/${story.storyId}`} className='story-link'>
             <StoryCard story={story} key={story.storyId} />
           </Link>
         )
