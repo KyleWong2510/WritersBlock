@@ -25,6 +25,7 @@
 }
 
 .story-container {
+  border-top: 2px solid #1A91F9;
   column-gap: 5%;
   display: grid;
   grid-column-gap: 2%;
@@ -32,6 +33,7 @@
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   height: 35vh;
   overflow: scroll;
+  padding-top: 2%;
   width: 100%;
 }
 
