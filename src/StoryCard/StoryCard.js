@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './StoryCard.css'
 
 const StoryCard = ({ story }) => {
@@ -13,4 +14,6 @@ const StoryCard = ({ story }) => {
 
 export default StoryCard
 
-//PROPTYPES
+StoryCard.propTypes = {
+  story: PropTypes.object
+}

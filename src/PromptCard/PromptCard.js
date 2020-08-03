@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './PromptCard.css'
 import { Link } from 'react-router-dom'
 
@@ -17,3 +18,7 @@ const PromptCard = ({ prompt }) => {
 }
 
 export default PromptCard
+
+PromptCard.propTypes = {
+  prompt: PropTypes.object
+}
