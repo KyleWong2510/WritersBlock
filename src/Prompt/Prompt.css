@@ -114,3 +114,7 @@
   height: 85%;
   text-align: left;
 }
+
+.story-link {
+  text-decoration: none;
+}
