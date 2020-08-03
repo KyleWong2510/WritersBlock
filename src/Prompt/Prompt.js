@@ -26,15 +26,15 @@ class Prompt extends React.Component {
   renderPrompt = () => {
     return this.props.prompt.prompt && 
       <section>
-        <h2 data-testid='prompt'>Prompt</h2>
+        <h2 className='prompt-page-title' data-testid='prompt'>Prompt</h2>
         <p>{this.props.prompt.prompt}</p>
       </section> 
   }
 
   renderCharacter = () => {
     return this.props.prompt.characterName && 
-      <section>
-        <h3>Character</h3>
+      <section className='prompt-character'>
+        <h3 className='prompt-page-title'>Character</h3>
         <p>Name: {this.props.prompt.characterName}</p>
         <p>Age: {this.props.prompt.characterAge}</p>
         <p>Nationality: {this.props.prompt.nationality}</p>
@@ -43,8 +43,8 @@ class Prompt extends React.Component {
 
   renderLocation = () => {
     return this.props.prompt.location && 
-      <section>
-        <h3>Location</h3>
+      <section className='prompt-location'>
+        <h3 className='prompt-page-title'>Location</h3>
         <p>City: {this.props.prompt.location.city}</p>
         <p>Country: {this.props.prompt.location.country}</p>
       </section>
@@ -69,7 +69,12 @@ class Prompt extends React.Component {
 
   renderButtons = () => {
     return this.state.isWriting ? 
-      <button onClick={this.completeStory}>Save this story</button> :
+      <button 
+        className='write-prompt-btn' 
+        onClick={this.completeStory}
+      >
+        Save this story
+      </button> :
       <button 
         className='write-prompt-btn' 
         onClick={(e) => this.toggleIsWriting(e)}
@@ -86,31 +91,33 @@ class Prompt extends React.Component {
     //ERROR HANDLING FOR NO TITLE
 
     return this.state.isWriting && 
-      <section>
-        <label htmlFor='title'>
-          Title: 
-          <input 
-            id='title'
-            type='text'
-            name='storyTitle'
-            placeholder='Story Title...'
-            value={this.state.storyTitle}
-            onChange={this.handleChange}
-          />
-        </label>
-        <label htmlFor='author'>
-          Written By:
-          <input 
-            id='author'
-            type='text'
-            name='authorName'
-            placeholder='Author Name...'
-            value={this.state.authorName}
-            onChange={this.handleChange}
-          />
-        </label>
-        <label htmlFor='story'>
-          Story:
+      <section className='prompt-writing'>
+        <section className='writing-inputs'>
+          <label htmlFor='title' className='writing-input'>
+            <h2 className='prompt-page-title'>Title: </h2>
+            <input 
+              id='title'
+              type='text'
+              name='storyTitle'
+              placeholder='Story Title...'
+              value={this.state.storyTitle}
+              onChange={this.handleChange}
+            />
+          </label>
+          <label htmlFor='author' className='writing-input'>
+            <h2 className='prompt-page-title'>Author: </h2>
+            <input 
+              id='author'
+              type='text'
+              name='authorName'
+              placeholder='Author Name...'
+              value={this.state.authorName}
+              onChange={this.handleChange}
+            />
+          </label>
+        </section>
+        <label htmlFor='story' className='text-area'>
+          <h2 className='prompt-page-title'>Story: </h2>
           <textarea 
             id='story'
             className='text-area'
@@ -122,7 +129,6 @@ class Prompt extends React.Component {
             cols='30'
           />
         </label>
-
       </section>
   }
 
@@ -150,10 +156,16 @@ class Prompt extends React.Component {
   render() {
     return (
       <main className='prompt'>
-        {this.renderPrompt()}
-        {this.renderCharacter()}
-        {this.renderLocation()}
-        {this.renderTextArea()}
+        <section className='prompt-top'>
+          <section className='prompt-details'>
+            {this.renderPrompt()}
+            {this.renderCharacter()}
+            {this.renderLocation()}
+          </section>
+          {/* <section> */}
+            {this.renderTextArea()}
+          {/* </section> */}
+        </section>
         {this.renderButtons()}
         {this.renderStories()}
       </main>
