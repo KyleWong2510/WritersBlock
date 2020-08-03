@@ -1,0 +1,13 @@
+.story-card {
+  background-color: #55ACF8;
+  border-radius: 5px;
+  color: white;
+  height: 15vh;
+  overflow: hidden;
+  padding: 1%;
+  width: 100%;
+}
+
+.story-card:hover {
+  background-color: #78BCF7;
+}

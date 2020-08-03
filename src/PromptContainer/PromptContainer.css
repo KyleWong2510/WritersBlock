@@ -7,13 +7,20 @@
 }
 
 .prompt-container-title {
+  font-family: 'Permanent Marker', cursive;
   text-align: center;
+}
+
+.prompt-desc {
+  font-family: 'Permanent Marker', cursive;
 }
 
 .prompts {
   column-gap: 2%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr ;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  height: 100%;
   overflow: scroll;
   padding: 2%;
   row-gap: 5%;

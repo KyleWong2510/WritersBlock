@@ -1,12 +1,16 @@
 .header {
+  background-color: #1A91F9;
+  color: white;
   display: flex;
+  font-family: 'Permanent Marker', cursive;
   height: 15vh;
-  justify-content: space-between;
+  justify-content: center;
   padding: 1%;
   width: 100vw
 }
 
 .header-title {
+  font-family: 'Permanent Marker', cursive;
   font-size: 3.5em;
 }
 
@@ -19,11 +23,37 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  text-align: center;
+}
+
+.gen-prompt-link {
+  height: 5%;
+  position: fixed;
+  right: 4%;
+  top: 9%;
+  width: 10%
 }
 
 .header-btn {
-  align-self: flex-end;
-  height: 25%;
+  background-color: #55ACF8;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  height: 100%;
   text-align: center;
-  width: 15%
+  width: 100%;
+}
+
+.header-btn:hover {
+  background-color: #78BCF7;
+}
+
+.home-link:link,
+.home-link:visited {
+  color: #EBD431;
+  text-decoration: none
+}
+
+.home-link:hover {
+  color: white
 }
