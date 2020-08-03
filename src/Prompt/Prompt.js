@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import StoryCard from '../StoryCard/StoryCard'
 import './Prompt.css'
 
 class Prompt extends React.Component {
@@ -135,13 +136,7 @@ class Prompt extends React.Component {
   renderStories = () => {
     if (this.props.stories.length > 0 ) {
       const stories = this.props.stories.map(story => {
-        return (
-          <section key={story.storyId}>
-            <p>{story.storyTitle}</p>
-            <p>by {story.authorName}</p>
-            <p>{story.storyText}</p>
-          </section>
-        )
+        return <StoryCard story={story} key={story.storyId} />
       })
       return (
         <section data-testid='related-stories' className='story-container'>
@@ -157,14 +152,12 @@ class Prompt extends React.Component {
     return (
       <main className='prompt'>
         <section className='prompt-top'>
+          {this.renderTextArea()}
           <section className='prompt-details'>
             {this.renderPrompt()}
             {this.renderCharacter()}
             {this.renderLocation()}
           </section>
-          {/* <section> */}
-            {this.renderTextArea()}
-          {/* </section> */}
         </section>
         {this.renderButtons()}
         {this.renderStories()}

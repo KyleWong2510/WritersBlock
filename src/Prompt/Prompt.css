@@ -19,10 +19,6 @@
   width: 100%
 }
 
-.text-area {
-  resize: none
-}
-
 .prompt-page-title {
   font-family: 'Permanent Marker', cursive;
 }
@@ -30,6 +26,7 @@
 .prompt-top {
   display: flex;
   height: 50%;
+  justify-content: center;
   width: 100%
 }
 
@@ -63,12 +60,13 @@
 .writing-inputs {
   display: flex;
   height: 15%;
-  justify-content: space-around;
+  /* justify-content: space-around; */
 }
 
 .writing-input {
   display: flex;
   justify-content: space-evenly;
+  margin-right: 2%;
 }
 
 #title,
@@ -77,11 +75,14 @@
 }
 
 #story {
-  height: 82%;
+  height: 84%;
   padding: 1%;
-  width: 100%
+  resize: none;
+  width: 100%;
+
 }
 
 .text-area {
-  height: 85%
+  height: 85%;
+  text-align: left;
 }
