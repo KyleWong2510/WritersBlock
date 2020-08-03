@@ -3,14 +3,18 @@ import PropTypes from 'prop-types'
 import './PromptCard.css'
 import { Link } from 'react-router-dom'
 
-const PromptCard = ({ prompt }) => {
+const PromptCard = ({ prompt, numStories }) => {
   return (
     <Link to={`/prompt/${prompt.id}`} className='prompt-card-link'>
       <section className='prompt-card' id={prompt.id}>
         <p data-testid='prompt-desc' className='prompt-desc'>{prompt.prompt}</p>
         <section data-testid='prompt-stats' className='prompt-stats'>
-          <p>X Stories</p>
-          <p>X likes</p>
+          {numStories !== 1 ?
+            <p>{numStories} Stories</p> :
+            <p>{numStories} Story</p>
+          }
+          {prompt.characterName && <p>Character</p>}
+          {prompt.location.city && <p>Location</p>}
         </section>
       </section>
     </Link>
