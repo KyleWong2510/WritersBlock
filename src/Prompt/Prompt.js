@@ -144,7 +144,7 @@ class Prompt extends React.Component {
         </section>
       )
     } else {
-      return <p data-testid='related-stories' className='story-container'>No stories yet.  Get to writing!</p>
+      return <p data-testid='related-stories' className='empty-story-container'>No stories yet.  Get to writing!</p>
     }
   }
 
