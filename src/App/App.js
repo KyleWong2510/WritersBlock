@@ -78,13 +78,11 @@ class App extends React.Component {
           render={({ match }) => {
             const { id } = match.params
             const story = this.state.stories.find(story => story.storyId === parseInt(id))
-            const prompt = this.state.prompts.find(prompt => prompt.id === story.promptId)
             return (
               <>
                 <Header />
                 <Story 
                   story={story}
-                  prompt={prompt}
                 />
               </>
             )
