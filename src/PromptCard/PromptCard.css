@@ -1,15 +1,31 @@
+.prompt-card-link {
+  text-decoration: none;
+}
+
+.prompt-card-link:link,
+.prompt-card-link:visited {
+  color: white
+}
+
 .prompt-card {
+  background-color: #55ACF8;
+  border-radius: 7px;
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 1%;
+  padding: 5%;
   width: 100%;
 }
 
+.prompt-card:hover {
+  background-color: #78BCF7;
+}
+
 .prompt-desc {
+  font-size: 1.25em;
   height: 80%;
   overflow: hidden;
-  width: 100%
+  width: 100%;
 }
 
 .prompt-stats {
