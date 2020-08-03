@@ -4,9 +4,16 @@ import './PromptContainer.css'
 
 import PromptCard from '../PromptCard/PromptCard'
 
-const PromptContainer = ({ prompts }) => {
+const PromptContainer = ({ prompts, stories }) => {
   const allPrompts = prompts.map(prompt => {
-    return <PromptCard prompt={prompt} key={prompt.id} />
+    const relatedStories = stories.filter(story => story.promptId === prompt.id)
+    return (
+      <PromptCard 
+        key={prompt.id} 
+        prompt={prompt} 
+        numStories={relatedStories.length}
+      />
+    )
   })
   
   return (
@@ -22,5 +29,6 @@ const PromptContainer = ({ prompts }) => {
 export default PromptContainer
 
 PromptContainer.propTypes = {
-  prompts: PropTypes.array
+  prompts: PropTypes.array,
+  stories: PropTypes.array
 }
