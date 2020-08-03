@@ -20,7 +20,7 @@ class App extends React.Component {
   componentDidMount = () => {
     getPrompts()
       .then(data => {
-        this.setState({ prompts: data})
+        this.setState({ prompts: data })
       })
       .catch(err => console.error(err))
     getStories()

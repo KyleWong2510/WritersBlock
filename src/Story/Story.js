@@ -1,10 +1,11 @@
 import React from 'react'
-import { withRouter } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import './Story.css'
-import { checkPropTypes } from 'prop-types'
 
 const Story = (props) => {
+  if (!props.story) return <Redirect to='/' />
   return (
     <main className='story'>
       <button 
@@ -23,3 +24,8 @@ const Story = (props) => {
 }
 
 export default withRouter(Story)
+
+Story.propTypes = {
+  story: PropTypes.object,
+  history: PropTypes.object
+}

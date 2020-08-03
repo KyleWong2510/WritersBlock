@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import StoryCard from '../StoryCard/StoryCard'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import './Prompt.css'
 
 class Prompt extends React.Component {
@@ -90,8 +90,6 @@ class Prompt extends React.Component {
   }
 
   renderTextArea = () => {
-    //ERROR HANDLING FOR NO TITLE
-
     return this.state.isWriting && 
       <section className='prompt-writing'>
         <section className='writing-inputs'>
@@ -154,6 +152,8 @@ class Prompt extends React.Component {
   }
 
   render() {
+    if (!this.props.prompt) return <Redirect to='/' />
+    
     return (
       <main className='prompt'>
         <section className='prompt-top'>
