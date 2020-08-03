@@ -5,6 +5,7 @@ import Header from '../Header/Header'
 import PromptContainer from '../PromptContainer/PromptContainer'
 import PromptGenerator from  '../PromptGenerator/PromptGenerator'
 import Prompt from '../Prompt/Prompt'
+import Story from '../Story/Story'
 import { getPrompts, getStories, postPrompt, postStory } from '../apiCalls'
 
 class App extends React.Component {
@@ -55,8 +56,7 @@ class App extends React.Component {
           />
         </Route>
         <Route 
-          exact
-          path='/prompt/:id'
+          exact path='/prompt/:id'
           render={({ match }) => {
             const { id } = match.params
             const prompt = this.state.prompts.find(prompt => prompt.id === parseInt(id))
@@ -68,6 +68,23 @@ class App extends React.Component {
                   prompt={prompt}
                   stories={stories} 
                   saveStory={this.saveStory}
+                />
+              </>
+            )
+          }}
+        />
+        <Route 
+          exact path='/story/:id'
+          render={({ match }) => {
+            const { id } = match.params
+            const story = this.state.stories.find(story => story.storyId === parseInt(id))
+            const prompt = this.state.prompts.find(prompt => prompt.id === story.promptId)
+            return (
+              <>
+                <Header />
+                <Story 
+                  story={story}
+                  prompt={prompt}
                 />
               </>
             )

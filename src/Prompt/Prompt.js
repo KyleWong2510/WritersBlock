@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import StoryCard from '../StoryCard/StoryCard'
+import { Link } from 'react-router-dom'
 import './Prompt.css'
 
 class Prompt extends React.Component {
@@ -136,7 +137,11 @@ class Prompt extends React.Component {
   renderStories = () => {
     if (this.props.stories.length > 0 ) {
       const stories = this.props.stories.map(story => {
-        return <StoryCard story={story} key={story.storyId} />
+        return (
+          <Link to={`/story/${story.storyId}`}>
+            <StoryCard story={story} key={story.storyId} />
+          </Link>
+        )
       })
       return (
         <section data-testid='related-stories' className='story-container'>
