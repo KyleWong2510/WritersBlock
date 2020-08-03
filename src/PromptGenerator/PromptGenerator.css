@@ -1,11 +1,15 @@
 .prompt-generator {
   align-content: center;
   height: 85vh;
-  padding: 15% 30%;
+  padding: 10% 30%;
   width: 100vw
 }
 
-.generator-btn-container {
+.generator-title {
+  font-family: 'Permanent Marker', cursive;
+}
+
+.generator-container {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -29,4 +33,19 @@
 
 .generate-btn {
   height: 30%
+}
+
+.generator-extra-details {
+  display: flex;
+  justify-content: space-between;
+  width: 100%
+}
+
+.prompt-details {
+  width: 100%
+}
+
+.character-details, 
+.location-details {
+  width: 45%
 }

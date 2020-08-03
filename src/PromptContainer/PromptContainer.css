@@ -7,7 +7,13 @@
 }
 
 .prompt-container-title {
+  font-family: 'Permanent Marker', cursive;
   text-align: center;
+}
+
+.prompt-desc {
+  font-family: 'Permanent Marker', cursive;
+
 }
 
 .prompts {

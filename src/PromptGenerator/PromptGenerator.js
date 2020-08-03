@@ -54,8 +54,8 @@ class PromptGenerator extends React.Component {
   renderPrompt = () => {
     if (this.state.prompt) {
       return (
-        <section>
-          <h3 data-testid='prompt-text'>Prompt</h3>
+        <section className='prompt-details'>
+          <h3 data-testid='prompt-text' className='generator-title'>Prompt</h3>
           <p>{this.state.prompt}</p>
         </section>
       )
@@ -129,7 +129,7 @@ class PromptGenerator extends React.Component {
     if (this.state.characterName && this.state.nationality && this.state.characterAge) {
       return (
         <section className='character-details'>
-          <h3>Character</h3>
+          <h3 className='generator-title'>Character</h3>
           <p className='character-name'>Name: {this.state.characterName}</p>
           <p>DOB: {this.state.characterAge}</p>
           <p className='character-nationality'>Nationality: {this.state.nationality}</p>
@@ -142,8 +142,8 @@ class PromptGenerator extends React.Component {
     const location = this.state.location
     if (location.city) {
       return (
-        <section>
-          <h3>Location</h3>
+        <section className='location-details'>
+          <h3 className='generator-title'>Location</h3>
           <p>City: {location.city}</p>
           <p>Country: {location.country}</p>
         </section>
@@ -154,11 +154,13 @@ class PromptGenerator extends React.Component {
   render() {
     return (
       <main className='prompt-generator'>
-        <section className='generator-btn-container'>
-          <h2>Generate a new prompt</h2>
+        <section className='generator-container'>
+          <h2 className='generator-title'>Generate a new prompt</h2>
           {this.renderPrompt()}
-          {this.renderCharacter()}
-          {this.renderLocation()}
+          <section className='generator-extra-details'>
+            {this.renderCharacter()}
+            {this.renderLocation()}
+          </section>
           <section className='generator-confirm-btns'>
             {this.renderBtns()}
           </section>

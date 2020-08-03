@@ -1,5 +1,6 @@
 .header {
   display: flex;
+  font-family: 'Permanent Marker', cursive;
   height: 15vh;
   justify-content: space-between;
   padding: 1%;
@@ -7,6 +8,7 @@
 }
 
 .header-title {
+  font-family: 'Permanent Marker', cursive;
   font-size: 3.5em;
 }
 
