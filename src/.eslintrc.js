@@ -18,7 +18,7 @@ module.exports = {
     "key-spacing": ["error", { "beforeColon": false, "afterColon": true }],
     "keyword-spacing": ["error", { "before": true, "after": true }],
     "linebreak-style": ["error", "unix"],
-    "max-len": ["warn", 85],
+    // "max-len": ["warn", 100],
     "new-cap": ["error", { "newIsCap": true }],
     "object-shorthand": ["error", "always"],
     "space-before-blocks": ["error", { "functions": "always", "keywords": "always", "classes": "always" }],
@@ -27,7 +27,7 @@ module.exports = {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/forbid-prop-types": 0,  
     "comma-dangle": ["error", "never"],
-    "max-lines-per-function": ["warn", 30],
+    // "max-lines-per-function": ["warn", 60],
     "semi": ["error", "never"],
   },
 }
