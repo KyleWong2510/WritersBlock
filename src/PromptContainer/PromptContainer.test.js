@@ -1,17 +1,15 @@
 import React from 'react'
-import PromptContainer from './PromptContainer'
 import { render } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
-import PromptCard from '../PromptCard/PromptCard'
+import PromptContainer from './PromptContainer'
 
 describe('PromptContainer', () => {
   it('should render the prompt container', () => {
-    const prompts = [{prompt: 'X'}, {prompt: 'Y'}]
+    const prompts = [{ prompt: 'X' }, { prompt: 'Y' }]
 
     const { getByText, getByTestId } = render(
       <BrowserRouter>
-        <PromptContainer prompts={prompts}
-        />
+        <PromptContainer prompts={prompts} stories={[]} />
       </BrowserRouter>
     )
 
@@ -23,12 +21,11 @@ describe('PromptContainer', () => {
   })
 
   it('should render the prompts', () => {
-    const prompts = [{prompt: 'X'}, {prompt: 'Y'}]
+    const prompts = [{ prompt: 'X' }, { prompt: 'Y' }]
 
     const { getByText } = render(
       <BrowserRouter>
-        <PromptContainer prompts={prompts}
-        />
+        <PromptContainer prompts={prompts} stories={[{}, {}, {}]} />
       </BrowserRouter>
     )
 

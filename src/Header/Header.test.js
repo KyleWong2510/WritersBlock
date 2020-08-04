@@ -10,7 +10,7 @@ describe('Header', () => {
         <Header />
       </BrowserRouter>
     )
-    
+
     const title = getByText('Writer\'s Block')
     const description = getByText('Writing prompt generator')
     const button = getByRole('button')
