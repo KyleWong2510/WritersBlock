@@ -62,6 +62,7 @@ class PromptGenerator extends React.Component {
     }
     return (
       <button
+        type="button"
         data-testid="generate-btn"
         className="generator-btns generate-btn"
         onClick={this.generatePrompt}
@@ -73,6 +74,7 @@ class PromptGenerator extends React.Component {
 
   renderCharacterBtn = () => (
     <button
+      type="button"
       className="generator-btns"
       onClick={this.generateCharacter}
     >
@@ -84,6 +86,7 @@ class PromptGenerator extends React.Component {
 
   renderLocationBtn = () => (
     <button
+      type="button"
       className="generator-btns"
       onClick={this.generateLocation}
     >
@@ -98,6 +101,7 @@ class PromptGenerator extends React.Component {
       return (
         <>
           <button
+            type="button"
             className="generator-btns"
             onClick={this.generatePrompt}
           >
@@ -107,6 +111,7 @@ class PromptGenerator extends React.Component {
           {this.renderLocationBtn()}
           <Link to={`/prompt/${this.state.id}`} className="generator-btns">
             <button
+              type="button"
               className="use-prompt-btn"
               onClick={() => this.props.savePrompt(this.state)}
             >

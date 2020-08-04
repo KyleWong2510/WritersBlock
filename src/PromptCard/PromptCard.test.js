@@ -23,12 +23,12 @@ describe('PromptCard', () => {
 
   it('should render the character if the prompt has a character', () => {
     const prompt = {
-      characterAge: "1991-02-04",
-      characterName: "Mrs Lotta Justi",
+      characterAge: '1991-02-04',
+      characterName: 'Mrs Lotta Justi',
       id: 1596484605566,
-      location: "",
-      nationality: "FI",
-      prompt: "A diminutive Marine who is greedily being held hostage on a busy Monday."
+      location: '',
+      nationality: 'FI',
+      prompt: 'A diminutive Marine who is greedily being held hostage on a busy Monday.'
     }
     const { getByText } = render(
       <BrowserRouter>
@@ -39,19 +39,19 @@ describe('PromptCard', () => {
     )
 
     const character = getByText('Character')
-    
+
     expect(character).toBeInTheDocument()
   })
 
   it('should render the location if the prompt is given a location', () => {
-    const prompt = { 
-      characterAge: "",
-      characterName: "",
+    const prompt = {
+      characterAge: '',
+      characterName: '',
       id: 1596484605566,
-      location: {city: "Enger", country: "Germany"},
-      nationality: "",
-      prompt: "A diminutive Marine who is greedily being held hostage on a busy Monday."
-    }    
+      location: { city: 'Enger', country: 'Germany' },
+      nationality: '',
+      prompt: 'A diminutive Marine who is greedily being held hostage on a busy Monday.'
+    }
     const { getByText } = render(
       <BrowserRouter>
         <PromptCard

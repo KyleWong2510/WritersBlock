@@ -67,13 +67,13 @@ class App extends React.Component {
           path="/prompt/:id"
           render={({ match }) => {
             const { id } = match.params
-            const prompt = this.state.prompts.find((prompt) => prompt.id === parseInt(id, 10))
+            const foundPrompt = this.state.prompts.find((prompt) => prompt.id === parseInt(id, 10))
             const stories = this.state.stories.filter((story) => story.promptId === parseInt(id, 10))
             return (
               <>
                 <Header />
                 <Prompt
-                  prompt={prompt}
+                  prompt={foundPrompt}
                   stories={stories}
                   saveStory={this.saveStory}
                 />
@@ -86,12 +86,12 @@ class App extends React.Component {
           path="/story/:id"
           render={({ match }) => {
             const { id } = match.params
-            const story = this.state.stories.find((story) => story.storyId === parseInt(id, 10))
+            const foundStory = this.state.stories.find((story) => story.storyId === parseInt(id, 10))
             return (
               <>
                 <Header />
                 <Story
-                  story={story}
+                  story={foundStory}
                 />
               </>
             )

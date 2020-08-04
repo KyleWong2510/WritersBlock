@@ -43,7 +43,7 @@ describe('Story', () => {
       goBack: mockGoBack
     }
 
-    const { getByRole, getByText } = render(
+    const { getByRole } = render(
       <BrowserRouter>
         <Story story={story} history={history} />
       </BrowserRouter>
@@ -51,8 +51,7 @@ describe('Story', () => {
 
     const backBtn = getByRole('button')
     fireEvent.click(backBtn)
-    
+
     expect(mockGoBack).toHaveBeenCalledTimes(1)
-    
   })
 })

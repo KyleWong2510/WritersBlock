@@ -9,6 +9,7 @@ const Story = (props) => {
   return (
     <main className="story">
       <button
+        type="button"
         className="back-btn"
         onClick={() => props.history.goBack()}
       >

@@ -126,7 +126,7 @@ describe('Prompt', () => {
       prompt: 'An off-white nun who is going to Senior Prom with an off-white and unkempt calligraphy enthusiast.'
     }
     const mockSaveStory = jest.fn()
-    const { getByPlaceholderText, getByRole, getByText } = render(
+    const { getByPlaceholderText, getByRole } = render(
       <BrowserRouter>
         <Prompt
           prompt={prompt}

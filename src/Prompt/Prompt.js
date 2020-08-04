@@ -86,7 +86,7 @@ class Prompt extends React.Component {
   renderButtons = () => (this.state.isWriting
     ? (
       <button
-        type='button'
+        type="button"
         className="write-prompt-btn"
         onClick={this.completeStory}
       >
@@ -95,7 +95,7 @@ class Prompt extends React.Component {
     )
     : (
       <button
-        type='button'
+        type="button"
         className="write-prompt-btn"
         onClick={(e) => this.toggleIsWriting(e)}
       >
@@ -104,7 +104,7 @@ class Prompt extends React.Component {
     ))
 
   toggleIsWriting = () => {
-    this.setState(prevState => ({ isWriting: !prevState.isWriting }))
+    this.setState((prevState) => ({ isWriting: !prevState.isWriting }))
   }
 
   renderTextArea = () => this.state.isWriting

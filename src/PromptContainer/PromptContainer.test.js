@@ -9,7 +9,7 @@ describe('PromptContainer', () => {
 
     const { getByText, getByTestId } = render(
       <BrowserRouter>
-        <PromptContainer prompts={prompts} stories={[]}/>
+        <PromptContainer prompts={prompts} stories={[]} />
       </BrowserRouter>
     )
 
@@ -25,7 +25,7 @@ describe('PromptContainer', () => {
 
     const { getByText } = render(
       <BrowserRouter>
-        <PromptContainer prompts={prompts} stories={[{}, {} ,{}]}/>
+        <PromptContainer prompts={prompts} stories={[{}, {}, {}]} />
       </BrowserRouter>
     )
 
