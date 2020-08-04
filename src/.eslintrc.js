@@ -1,0 +1,33 @@
+module.exports = {
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "mocha": true,
+    "jest": true
+  },
+  "extends": "eslint:recommended",
+  "parserOptions": { "sourceType": "module" },
+  "rules": {
+    "eqeqeq": ["error", "always"],
+    "brace-style": "error",
+    "comma-spacing": ["warn", { "before": false, "after": true }],
+    "curly": "error",
+    "semi-spacing": ["error", { "before": false, "after": true }],
+    "indent": ["warn", 2],
+    "key-spacing": ["error", { "beforeColon": false, "afterColon": true }],
+    "keyword-spacing": ["error", { "before": true, "after": true }],
+    "linebreak-style": ["error", "unix"],
+    "max-len": ["warn", 85],
+    "new-cap": ["error", { "newIsCap": true }],
+    "object-shorthand": ["error", "always"],
+    "space-before-blocks": ["error", { "functions": "always", "keywords": "always", "classes": "always" }],
+    "space-infix-ops": ["error", { "int32Hint": false }],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/forbid-prop-types": 0,  
+    "comma-dangle": ["error", "never"],
+    "max-lines-per-function": ["error", 30],
+    "semi": ["error", "never"],
+  },
+}

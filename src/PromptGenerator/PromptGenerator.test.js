@@ -1,128 +1,128 @@
 import React from 'react'
-import PromptGenerator from './PromptGenerator'
 import { render, fireEvent, waitFor } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
+import PromptGenerator from './PromptGenerator'
+import { getRandomCharacter, getRandomPrompt } from '../apiCalls'
 
 jest.mock('../apiCalls')
-import { getRandomCharacter, getRandomPrompt } from '../apiCalls'
 
 describe('PromptGenerator', () => {
   getRandomPrompt.mockResolvedValue({
-    "query": [
-      "adjective",
-      "noun",
-      "adverb",
-      "verb",
-      "adjective"
+    query: [
+      'adjective',
+      'noun',
+      'adverb',
+      'verb',
+      'adjective'
     ],
-    "english": "A considerate elf who is intelligently running after an American chef.",
-    "components": [
+    english: 'A considerate elf who is intelligently running after an American chef.',
+    components: [
       {
-        "type": "noun",
-        "start": "",
-        "words": [
+        type: 'noun',
+        start: '',
+        words: [
           {
-            "type": "adjective",
-            "phrase": "noun",
-            "start": "",
-            "text": "considerate",
-            "end": ""
+            type: 'adjective',
+            phrase: 'noun',
+            start: '',
+            text: 'considerate',
+            end: ''
           }, {
-            "type": "noun",
-            "phrase": "noun",
-            "start": "",
-            "text": "elf",
-            "end": ""
+            type: 'noun',
+            phrase: 'noun',
+            start: '',
+            text: 'elf',
+            end: ''
           }
         ],
-        "end": "",
-        "english": "a considerate elf who is"
+        end: '',
+        english: 'a considerate elf who is'
       }, {
-        "type": "verb",
-        "start": "",
-        "words": [
+        type: 'verb',
+        start: '',
+        words: [
           {
-            "type": "adverb",
-            "phrase": "verb",
-            "start": "",
-            "text": "intelligently",
-            "end": ""
+            type: 'adverb',
+            phrase: 'verb',
+            start: '',
+            text: 'intelligently',
+            end: ''
           },
           {
-            "type": "verb",
-            "phrase": "verb",
-            "start": "",
-            "text": "running after",
-            "end": ""
+            type: 'verb',
+            phrase: 'verb',
+            start: '',
+            text: 'running after',
+            end: ''
           }
         ],
-        "end": "",
-        "english": "intelligently running after"
+        end: '',
+        english: 'intelligently running after'
       }, {
-        "type": "noun",
-        "start": "",
-        "words": [
+        type: 'noun',
+        start: '',
+        words: [
           {
-            "type": "adjective",
-            "phrase": "noun",
-            "start": "",
-            "text": "American",
-            "end": ""
+            type: 'adjective',
+            phrase: 'noun',
+            start: '',
+            text: 'American',
+            end: ''
           }, {
-            "type": "noun",
-            "phrase": "noun",
-            "start": "",
-            "text": "chef",
-            "end": ""
+            type: 'noun',
+            phrase: 'noun',
+            start: '',
+            text: 'chef',
+            end: ''
           }
         ],
-        "end": "",
-        "english": "an American chef"
+        end: '',
+        english: 'an American chef'
       }
     ],
-    "count": 10394397,
-    "dictionaryURL": "http://ineedaprompt.com/dictionary/default/json"
+    count: 10394397,
+    dictionaryURL: 'http://ineedaprompt.com/dictionary/default/json'
   })
 
   getRandomCharacter.mockResolvedValue({
-    "results": [
+    results: [
       {
-        "gender": "male",
-        "name": {
-          "title": "Mr",
-          "first": "Özkan",
-          "last": "Ekşioğlu"
+        gender: 'male',
+        name: {
+          title: 'Mr',
+          first: 'Özkan',
+          last: 'Ekşioğlu'
         },
-        "location": {
-          "street": {
-            "number": 1867,
-            "name": "Anafartalar Cd"
+        location: {
+          street: {
+            number: 1867,
+            name: 'Anafartalar Cd'
           },
-          "city": "Ardahan",
-          "state": "Kırşehir",
-          "country": "Turkey",
-          "postcode": 69806,
-          "coordinates": {
-            "latitude": "78.0642",
-            "longitude": "-15.7734"
+          city: 'Ardahan',
+          state: 'Kırşehir',
+          country: 'Turkey',
+          postcode: 69806,
+          coordinates: {
+            latitude: '78.0642',
+            longitude: '-15.7734'
           },
-          "timezone": {
-            "offset": "-6:00",
-            "description": "Central Time (US & Canada), Mexico City"
+          timezone: {
+            offset: '-6:00',
+            description: 'Central Time (US & Canada), Mexico City'
           }
         },
-        "dob": {
-          "date": "1959-08-02T08:16:52.011Z",
-          "age": 61
+        dob: {
+          date: '1959-08-02T08:16:52.011Z',
+          age: 61
         },
-        "nat": "TR"
+        nat: 'TR'
       }
     ],
-    "info": {
-      "seed": "a7e257249a8a6e3a",
-      "results": 1,
-      "page": 1,
-      "version": "1.3"
+    info: {
+      seed: 'a7e257249a8a6e3a',
+      results: 1,
+      page: 1,
+      version: '1.3'
     }
   })
 
@@ -132,7 +132,7 @@ describe('PromptGenerator', () => {
         <PromptGenerator />
       </BrowserRouter>
     )
-    
+
     const title = getByText('Generate a new prompt')
     const button = getByRole('button')
 
@@ -146,16 +146,16 @@ describe('PromptGenerator', () => {
         <PromptGenerator />
       </BrowserRouter>
     )
-    
-    const genPromptBtn = getByRole('button', {name: 'Generate Prompt'})
+
+    const genPromptBtn = getByRole('button', { name: 'Generate Prompt' })
 
     fireEvent.click(genPromptBtn)
 
     const promptText = await waitFor(() => getByTestId('prompt-text'))
-    const genNewPromptBtn = await waitFor(() => getByRole('button', {name: 'Generate New Prompt'}))
-    const addCharacterBtn = await waitFor(() => getByRole('button', {name: 'Add a Character'}))
-    const addLocationBtn = await waitFor(() => getByRole('button', {name: 'Add a Location'}))
-    const usePromptBtn = await waitFor(() => getByRole('button', {name: 'Use This Prompt'}))
+    const genNewPromptBtn = await waitFor(() => getByRole('button', { name: 'Generate New Prompt' }))
+    const addCharacterBtn = await waitFor(() => getByRole('button', { name: 'Add a Character' }))
+    const addLocationBtn = await waitFor(() => getByRole('button', { name: 'Add a Location' }))
+    const usePromptBtn = await waitFor(() => getByRole('button', { name: 'Use This Prompt' }))
 
     expect(promptText).toBeInTheDocument()
     expect(genNewPromptBtn).toBeInTheDocument()
@@ -170,15 +170,15 @@ describe('PromptGenerator', () => {
         <PromptGenerator />
       </BrowserRouter>
     )
-    
-    const genPromptBtn = getByRole('button', {name: 'Generate Prompt'})
+
+    const genPromptBtn = getByRole('button', { name: 'Generate Prompt' })
     fireEvent.click(genPromptBtn)
 
-    const genNewPromptBtn = await waitFor(() => getByRole('button', {name: 'Generate New Prompt'}))
+    const genNewPromptBtn = await waitFor(() => getByRole('button', { name: 'Generate New Prompt' }))
     fireEvent.click(genNewPromptBtn)
 
     const promptText = await waitFor(() => getByTestId('prompt-text'))
-    
+
     expect(promptText).toBeInTheDocument()
   })
 
@@ -188,15 +188,15 @@ describe('PromptGenerator', () => {
         <PromptGenerator />
       </BrowserRouter>
     )
-    
-    const genPromptBtn = getByRole('button', {name: 'Generate Prompt'})
+
+    const genPromptBtn = getByRole('button', { name: 'Generate Prompt' })
     fireEvent.click(genPromptBtn)
 
-    const addCharacterBtn = await waitFor(() => getByRole('button', {name: 'Add a Character'}))
+    const addCharacterBtn = await waitFor(() => getByRole('button', { name: 'Add a Character' }))
     fireEvent.click(addCharacterBtn)
 
     const character = await waitFor(() => getByText('Character'))
-    
+
     expect(character).toBeInTheDocument()
   })
 
@@ -206,15 +206,15 @@ describe('PromptGenerator', () => {
         <PromptGenerator />
       </BrowserRouter>
     )
-    
-    const genPromptBtn = getByRole('button', {name: 'Generate Prompt'})
+
+    const genPromptBtn = getByRole('button', { name: 'Generate Prompt' })
     fireEvent.click(genPromptBtn)
 
-    const addLocationBtn = await waitFor(() => getByRole('button', {name: 'Add a Location'}))
+    const addLocationBtn = await waitFor(() => getByRole('button', { name: 'Add a Location' }))
     fireEvent.click(addLocationBtn)
 
     const location = await waitFor(() => getByText('Location'))
-    
+
     expect(location).toBeInTheDocument()
   })
 
@@ -225,13 +225,13 @@ describe('PromptGenerator', () => {
         <PromptGenerator savePrompt={mockSavePrompt} />
       </BrowserRouter>
     )
-    
-    const genPromptBtn = getByRole('button', {name: 'Generate Prompt'})
+
+    const genPromptBtn = getByRole('button', { name: 'Generate Prompt' })
     fireEvent.click(genPromptBtn)
 
-    const usePromptBtn = await waitFor(() => getByRole('button', {name: 'Use This Prompt'}))
+    const usePromptBtn = await waitFor(() => getByRole('button', { name: 'Use This Prompt' }))
     fireEvent.click(usePromptBtn)
-    
+
     expect(mockSavePrompt).toHaveBeenCalledTimes(1)
   })
 })

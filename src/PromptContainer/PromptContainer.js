@@ -5,21 +5,21 @@ import './PromptContainer.css'
 import PromptCard from '../PromptCard/PromptCard'
 
 const PromptContainer = ({ prompts, stories }) => {
-  const allPrompts = prompts.map(prompt => {
-    const relatedStories = stories.filter(story => story.promptId === prompt.id)
+  const allPrompts = prompts.map((prompt) => {
+    const relatedStories = stories.filter((story) => story.promptId === prompt.id)
     return (
-      <PromptCard 
-        key={prompt.id} 
-        prompt={prompt} 
+      <PromptCard
+        key={prompt.id}
+        prompt={prompt}
         numStories={relatedStories.length}
       />
     )
   })
-  
+
   return (
-    <main className='prompt-container'>
-      <h2 className='prompt-container-title'>Prompts</h2>
-      <section data-testid='prompts' className='prompts'>
+    <main className="prompt-container">
+      <h2 className="prompt-container-title">Prompts</h2>
+      <section data-testid="prompts" className="prompts">
         {allPrompts}
       </section>
     </main>

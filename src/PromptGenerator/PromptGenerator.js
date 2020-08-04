@@ -7,114 +7,107 @@ import { getRandomCharacter, getRandomPrompt } from '../apiCalls'
 class PromptGenerator extends React.Component {
   constructor(props) {
     super(props)
-    this.state={
+    this.state = {
       id: Date.now(),
       prompt: '',
       characterName: '',
       characterAge: '',
       location: '',
-      nationality: '',
+      nationality: ''
     }
   }
 
   generateCharacter = () => {
     getRandomCharacter()
-      .then(data => {
+      .then((data) => {
         const character = data.results[0]
         this.setState({ characterName: `${character.name.title} ${character.name.first} ${character.name.last}` })
-        this.setState({ characterAge: character.dob.date.split('T')[0]})
-        this.setState({ nationality: character.nat})
+        this.setState({ characterAge: character.dob.date.split('T')[0] })
+        this.setState({ nationality: character.nat })
       })
-      .catch(err => console.error(err))
-    }
-    
-    generateLocation = () => {
-      getRandomCharacter()
-      .then(data => {
-        const location = data.results[0].location
-        this.setState({ 
-          location: location 
-        })
-      })
-      .catch(err => console.error(err))
+      .catch((err) => console.error(err))
   }
 
-  // generateWords = () => {
-  //   getRandomWords()
-  //     .then(data => this.setState({ words: data }))
-  //     .catch(err => console.error(err))
-  // }
+    generateLocation = () => {
+      getRandomCharacter()
+        .then((data) => {
+          const { location } = data.results[0]
+          this.setState({
+            location
+          })
+        })
+        .catch((err) => console.error(err))
+    }
+
+    // generateWords = () => {
+    //   getRandomWords()
+    //     .then(data => this.setState({ words: data }))
+    //     .catch(err => console.error(err))
+    // }
 
   generatePrompt = () => {
     getRandomPrompt()
-      .then(data => this.setState({ prompt: data.english }))
-      .catch(err => console.error(err))
+      .then((data) => this.setState({ prompt: data.english }))
+      .catch((err) => console.error(err))
   }
 
   renderPrompt = () => {
     if (this.state.prompt) {
       return (
-        <section className='generator-prompt-details'>
-          <h3 data-testid='prompt-text' className='generator-title'>Prompt</h3>
+        <section className="generator-prompt-details">
+          <h3 data-testid="prompt-text" className="generator-title">Prompt</h3>
           <p>{this.state.prompt}</p>
         </section>
       )
-    } else {
-      return (
-        <button 
-          data-testid='generate-btn'
-          className='generator-btns generate-btn'
-          onClick={this.generatePrompt}
-        >
-          Generate Prompt
-        </button>
-      )
     }
-  }
-
-  renderCharacterBtn = () => {
-      return (
-        <button 
-          className='generator-btns' 
-          onClick={this.generateCharacter}
-        >
-          {!this.state.characterName ? 
-            <p>Add a Character</p> :
-            <p>Get a New Character</p>
-          }
-        </button>
-      )
-  }
-
-  renderLocationBtn = () => {
     return (
-      <button 
-        className='generator-btns'
-        onClick={this.generateLocation}
+      <button
+        data-testid="generate-btn"
+        className="generator-btns generate-btn"
+        onClick={this.generatePrompt}
       >
-        {!this.state.location.city ?
-          <p>Add a Location</p> :
-          <p>Get a New Location</p>
-        }
+        Generate Prompt
       </button>
     )
   }
+
+  renderCharacterBtn = () => (
+    <button
+      className="generator-btns"
+      onClick={this.generateCharacter}
+    >
+      {!this.state.characterName
+        ? <p>Add a Character</p>
+        : <p>Get a New Character</p>}
+    </button>
+  )
+
+  renderLocationBtn = () => (
+    <button
+      className="generator-btns"
+      onClick={this.generateLocation}
+    >
+      {!this.state.location.city
+        ? <p>Add a Location</p>
+        : <p>Get a New Location</p>}
+    </button>
+  )
 
   renderBtns = () => {
     if (this.state.prompt) {
       return (
         <>
-          <button 
-            className='generator-btns'
+          <button
+            className="generator-btns"
             onClick={this.generatePrompt}
           >
-          Generate New Prompt
+            Generate New Prompt
           </button>
           {this.renderCharacterBtn()}
           {this.renderLocationBtn()}
-          <Link to={`/prompt/${this.state.id}`} className='generator-btns'>
-            <button 
-              className='use-prompt-btn'
+          <Link to={`/prompt/${this.state.id}`} className="generator-btns">
+            <button
+              className="use-prompt-btn"
               onClick={() => this.props.savePrompt(this.state)}
             >
               Use This Prompt
@@ -128,24 +121,44 @@ class PromptGenerator extends React.Component {
   renderCharacter = () => {
     if (this.state.characterName && this.state.nationality && this.state.characterAge) {
       return (
-        <section className='character-details'>
-          <h3 className='generator-title'>Character</h3>
-          <p className='character-name'>Name: {this.state.characterName}</p>
-          <p>DOB: {this.state.characterAge}</p>
-          <p className='character-nationality'>Nationality: {this.state.nationality}</p>
+        <section className="character-details">
+          <h3 className="generator-title">Character</h3>
+          <p className="character-name">
+            Name:
+            {' '}
+            {this.state.characterName}
+          </p>
+          <p>
+            DOB:
+            {' '}
+            {this.state.characterAge}
+          </p>
+          <p className="character-nationality">
+            Nationality:
+            {' '}
+            {this.state.nationality}
+          </p>
         </section>
       )
     }
   }
 
   renderLocation = () => {
-    const location = this.state.location
+    const { location } = this.state
     if (location.city) {
       return (
-        <section className='location-details'>
-          <h3 className='generator-title'>Location</h3>
-          <p>City: {location.city}</p>
-          <p>Country: {location.country}</p>
+        <section className="location-details">
+          <h3 className="generator-title">Location</h3>
+          <p>
+            City:
+            {' '}
+            {location.city}
+          </p>
+          <p>
+            Country:
+            {' '}
+            {location.country}
+          </p>
         </section>
       )
     }
@@ -153,15 +166,15 @@ class PromptGenerator extends React.Component {
 
   render() {
     return (
-      <main className='prompt-generator'>
-        <section className='generator-container'>
-          <h2 className='generator-title'>Generate a new prompt</h2>
+      <main className="prompt-generator">
+        <section className="generator-container">
+          <h2 className="generator-title">Generate a new prompt</h2>
           {this.renderPrompt()}
-          <section className='generator-extra-details'>
+          <section className="generator-extra-details">
             {this.renderCharacter()}
             {this.renderLocation()}
           </section>
-          <section className='generator-confirm-btns'>
+          <section className="generator-confirm-btns">
             {this.renderBtns()}
           </section>
         </section>

@@ -1,7 +1,7 @@
-import React from 'react';
-import { render, fireEvent, waitFor } from '@testing-library/react';
+import React from 'react'
+import { render, fireEvent, waitFor } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
-import App from './App';
+import App from './App'
 
 describe('App', () => {
   it('should render Header and the PromptContainer', () => {
@@ -24,8 +24,8 @@ describe('App', () => {
         <App />
       </MemoryRouter>
     )
-  
-    const button = getByRole('button', {name: 'Generate Prompt'})
+
+    const button = getByRole('button', { name: 'Generate Prompt' })
     fireEvent.click(button)
 
     const promptGenerator = getByText('Generate a new prompt')
@@ -33,7 +33,6 @@ describe('App', () => {
   })
 
   it.skip('should render a Prompt when clicking the Link in the PromptContainer', () => {
-    //ADD PROMPTS TO RENDER
+    // ADD PROMPTS TO RENDER
   })
 })
-

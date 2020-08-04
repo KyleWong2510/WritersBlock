@@ -1,17 +1,19 @@
-import React from 'react';
+import React from 'react'
 import { Route } from 'react-router-dom'
-import './App.css';
+import './App.css'
 import Header from '../Header/Header'
 import PromptContainer from '../PromptContainer/PromptContainer'
-import PromptGenerator from  '../PromptGenerator/PromptGenerator'
+import PromptGenerator from '../PromptGenerator/PromptGenerator'
 import Prompt from '../Prompt/Prompt'
 import Story from '../Story/Story'
-import { getPrompts, getStories, postPrompt, postStory } from '../apiCalls'
+import {
+  getPrompts, getStories, postPrompt, postStory
+} from '../apiCalls'
 
 class App extends React.Component {
   constructor() {
     super()
-    this.state={
+    this.state = {
       prompts: [],
       stories: []
     }
@@ -19,72 +21,76 @@ class App extends React.Component {
 
   componentDidMount = () => {
     getPrompts()
-      .then(data => {
+      .then((data) => {
         this.setState({ prompts: data })
       })
-      .catch(err => console.error(err))
+      .catch((err) => console.error(err))
     getStories()
-      .then(data => {
+      .then((data) => {
         this.setState({ stories: data })
       })
-      .catch(err => console.error(err))
+      .catch((err) => console.error(err))
   }
 
   savePrompt = (newPrompt) => {
-    this.setState({ prompts: [...this.state.prompts, newPrompt]})
+    const { prompts } = this.state
+    this.setState({ prompts: [...prompts, newPrompt] })
     postPrompt(newPrompt)
-      .catch(err => console.error(err))
+      .catch((err) => console.error(err))
   }
-  
+
   saveStory = (newStory) => {
-    this.setState({ stories: [...this.state.stories, newStory]})
+    const { stories } = this.state
+    this.setState({ stories: [...stories, newStory] })
     postStory(newStory)
-      .catch(err => console.error(err))
+      .catch((err) => console.error(err))
   }
 
   render() {
     return (
       <>
-        <Route exact path='/'>
+        <Route exact path="/">
           <Header />
-          <PromptContainer 
+          <PromptContainer
             prompts={this.state.prompts}
             stories={this.state.stories}
           />
         </Route>
-        <Route path='/prompt-generator'>
+        <Route path="/prompt-generator">
           <Header />
-          <PromptGenerator 
+          <PromptGenerator
             savePrompt={this.savePrompt}
           />
         </Route>
-        <Route 
-          exact path='/prompt/:id'
+        <Route
+          exact
+          path="/prompt/:id"
           render={({ match }) => {
             const { id } = match.params
-            const prompt = this.state.prompts.find(prompt => prompt.id === parseInt(id))
-            const stories = this.state.stories.filter(story => story.promptId === parseInt(id))
+            const prompt = this.state.prompts.find((prompt) => prompt.id === parseInt(id, 10))
+            const stories = this.state.stories.filter((story) => story.promptId === parseInt(id, 10))
             return (
               <>
                 <Header />
-                <Prompt 
+                <Prompt
                   prompt={prompt}
-                  stories={stories} 
+                  stories={stories}
                   saveStory={this.saveStory}
                 />
               </>
             )
           }}
         />
-        <Route 
-          exact path='/story/:id'
+        <Route
+          exact
+          path="/story/:id"
           render={({ match }) => {
             const { id } = match.params
-            const story = this.state.stories.find(story => story.storyId === parseInt(id))
+            const story = this.state.stories.find((story) => story.storyId === parseInt(id, 10))
             return (
               <>
                 <Header />
-                <Story 
+                <Story
                   story={story}
                 />
               </>
@@ -96,4 +102,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default App
